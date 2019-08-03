@@ -1,0 +1,10 @@
+F:\ScoreCricket\Scoreboard\Scoreboard\bin\Debug\Scoreboard.exe.config
+F:\ScoreCricket\Scoreboard\Scoreboard\bin\Debug\Scoreboard.exe
+F:\ScoreCricket\Scoreboard\Scoreboard\bin\Debug\Scoreboard.pdb
+F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.csprojAssemblyReference.cache
+F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.Form1.resources
+F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.Properties.Resources.resources
+F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.csproj.GenerateResource.cache
+F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.csproj.CoreCompileInputs.cache
+F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.exe
+F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.pdb
