@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -70,105 +71,42 @@ namespace Scoreboard
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader("F:\\ScoreCricket\\Stats.txt");
-                StreamReader sr1 = new StreamReader("F:\\ScoreCricket\\Stats.txt");
-                StringBuilder sb = new StringBuilder("", 50);
-                line = sr.ReadLine();
-                line = sr1.ReadLine();
-                nop = Int32.Parse(line);
-                //flowLayoutPanel1.Controls.Clear();
-                for (int x = 0; x < nop; x++)
+                StreamReader sr = new StreamReader("C:\\Users\\sanat\\Source\\Repos\\ScoreCricket\\ScoreCricket\\Stats.txt");
+                 using (sr) 
                 {
-                    
-                    line = sr.ReadLine();
-                    length = line.Length;
-                    for (int y = length; y >0; y--)
-                    {
-                        
-                        val = (char)sr1.Read();
-
-                        if (val == ' ')
-                        {
-                            
-                            switch (caseSwitch)
-                            {
-                                case 1:
-                                    name = sb.ToString();
-                                    caseSwitch++;
-                                    sb.Clear();
-                                    break;
-
-                                case 2:
-
-                                    strikerate = Int32.Parse(sb.ToString());
-                                    caseSwitch++;
-                                    sb.Clear();
-                                    break;
-
-                                case 3:
-                                    economyrate = Int32.Parse(sb.ToString());
-                                    caseSwitch++;
-                                    sb.Clear();
-                                    break;
-
-                                case 4:
-                                    runs = Int32.Parse(sb.ToString());
-                                    caseSwitch++;
-                                    sb.Clear();
-                                    break;
-
-                                case 5:
-                                    wickets = Int32.Parse(sb.ToString());
-                                    caseSwitch++;
-                                    sb.Clear();
-                                    break;
-
-                                case 6:
-                                    fours = Int32.Parse(sb.ToString());
-                                    caseSwitch++;
-                                    sb.Clear();
-                                    break;
-
-                                case 7:
-                                    sixes = Int32.Parse(sb.ToString());
-                                    caseSwitch++;
-                                    caseSwitch = 1;
-                                    sb.Clear();
-                                    break;
-
-                                default:
-
-                                    sb.Clear();
-                                    break;
-                            }
-                        
-                        } else
-                        {
-                            sb.Append(val);
-                        }
-                    }
-                    
+                string line;
+                // Read and display lines from the file until the end of 
+                // the file is reached.
+                while ((line = sr.ReadLine()) != null) 
+                {
+                    string[] temp = line.Split(' ');
+                    name= temp[0];
+                    strikerate=Int32.Parse(temp[1]);
+                    economyrate=Int32.Parse(temp[2]);
+                    runs = Int32.Parse(temp[3]);
+                    wickets = Int32.Parse(temp[4]);
+                    fours = Int32.Parse(temp[5]);
+                    sixes = Int32.Parse(temp[6]);
+               
                     Label currentName = new Label();
                     currentName.Name = name;
                     currentName.Text = name;
                     currentName.AutoSize = false;
-                    //currentName.Size = (80, 80);
+                    currentName.Size = new Size(80, 80);
                     //flowLayoutPanel1.Controls.Add(currentName);
-
+                }
                 }
 
-
-                sr.Close();
-                sr1.Close();
-                Console.ReadLine();
+                
             }
             catch (Exception f)
             {
-                Console.WriteLine("Exception: " + f.Message);
+                Debug.WriteLine("Exception: " + f.Message);
+       
             }
             finally
             {
-                Console.WriteLine("Executing finally block.");
+                Debug.WriteLine("Executing finally block.");
             }
         }
 
