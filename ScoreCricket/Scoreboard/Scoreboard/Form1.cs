@@ -8,22 +8,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
 
 namespace Scoreboard
 {
     public partial class Form1 : Form
     {
-        String sb1;
+        int nop;
+        String line;
+        String name;
+        int strikerate;
+        int economyrate;
+        int runs;
+        int wickets;
+        int fours;
+        int sixes;
+        int length;
+        char val;
+        int caseSwitch = 1;
+        int FormWidth = 1280;
+        int FormLength = 1024;
+        
+
         public Form1()
         {
             InitializeComponent();
+            
+
         }
 
-        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            this.Size = new System.Drawing.Size(FormWidth, FormLength);
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -43,40 +65,101 @@ namespace Scoreboard
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
-
-             String line;
+            //panel1.Visible = true;
+            
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
                 StreamReader sr = new StreamReader("F:\\ScoreCricket\\Stats.txt");
+                StreamReader sr1 = new StreamReader("F:\\ScoreCricket\\Stats.txt");
                 StringBuilder sb = new StringBuilder("", 50);
-                //Read the first line of text
                 line = sr.ReadLine();
-
-                //Continue to read until you reach end of file
-                while (line != null)
+                line = sr1.ReadLine();
+                nop = Int32.Parse(line);
+                //flowLayoutPanel1.Controls.Clear();
+                for (int x = 0; x < nop; x++)
                 {
-                    char val = (char) sr.Read();
-                    if (val == ' ')
-                    {
-                        Console.WriteLine(sb);
-                        Player1.Text = sb.ToString();
-                        sb1 = sb.ToString();
-                        sb.Clear();
-                    } else
-                    {
-                        sb.Append(new char[] { val });
-                    }
-                    //write the lie to console window
-                    //Console.WriteLine(line);
-                    //Read the next line
+                    
                     line = sr.ReadLine();
+                    length = line.Length;
+                    for (int y = length; y >0; y--)
+                    {
+                        
+                        val = (char)sr1.Read();
 
-                    sb.Append(new char[] { 'D', 'E', 'F' });
+                        if (val == ' ')
+                        {
+                            
+                            switch (caseSwitch)
+                            {
+                                case 1:
+                                    name = sb.ToString();
+                                    caseSwitch++;
+                                    sb.Clear();
+                                    break;
+
+                                case 2:
+
+                                    strikerate = Int32.Parse(sb.ToString());
+                                    caseSwitch++;
+                                    sb.Clear();
+                                    break;
+
+                                case 3:
+                                    economyrate = Int32.Parse(sb.ToString());
+                                    caseSwitch++;
+                                    sb.Clear();
+                                    break;
+
+                                case 4:
+                                    runs = Int32.Parse(sb.ToString());
+                                    caseSwitch++;
+                                    sb.Clear();
+                                    break;
+
+                                case 5:
+                                    wickets = Int32.Parse(sb.ToString());
+                                    caseSwitch++;
+                                    sb.Clear();
+                                    break;
+
+                                case 6:
+                                    fours = Int32.Parse(sb.ToString());
+                                    caseSwitch++;
+                                    sb.Clear();
+                                    break;
+
+                                case 7:
+                                    sixes = Int32.Parse(sb.ToString());
+                                    caseSwitch++;
+                                    caseSwitch = 1;
+                                    sb.Clear();
+                                    break;
+
+                                default:
+
+                                    sb.Clear();
+                                    break;
+                            }
+                        
+                        } else
+                        {
+                            sb.Append(val);
+                        }
+                    }
+                    
+                    Label currentName = new Label();
+                    currentName.Name = name;
+                    currentName.Text = name;
+                    currentName.AutoSize = false;
+                    //currentName.Size = (80, 80);
+                    //flowLayoutPanel1.Controls.Add(currentName);
+
                 }
 
+
                 sr.Close();
+                sr1.Close();
                 Console.ReadLine();
             }
             catch (Exception f)
@@ -86,29 +169,13 @@ namespace Scoreboard
             finally
             {
                 Console.WriteLine("Executing finally block.");
-            } 
+            }
         }
 
         
 
-        private void Panel1_Paint(object sender, PaintEventArgs e)
-        {
+       
 
-        }
-
-        private void Button6_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = false;
-        }
-
-        private void Player1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            Player1.Text = sb1;
-        }
+        
     }
 }
