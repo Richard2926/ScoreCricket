@@ -8,3 +8,13 @@ F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.csproj.GenerateResour
 F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.csproj.CoreCompileInputs.cache
 F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.exe
 F:\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.pdb
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\bin\Debug\Scoreboard.exe.config
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\bin\Debug\Scoreboard.exe
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\bin\Debug\Scoreboard.pdb
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.csprojAssemblyReference.cache
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.Form1.resources
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.Properties.Resources.resources
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.csproj.GenerateResource.cache
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.csproj.CoreCompileInputs.cache
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.exe
+C:\Users\sanat\source\repos\ScoreCricket\ScoreCricket\Scoreboard\Scoreboard\obj\Debug\Scoreboard.pdb

@@ -22,6 +22,13 @@ namespace Scoreboard
         int nop;
         String line;
         String name;
+
+
+
+
+
+
+
         const int strikerate = 0;
         const int economyrate = 0;
         const int runs = 0;
@@ -74,8 +81,8 @@ namespace Scoreboard
             try
             {
 
-                StreamReader sr = new StreamReader("F:\\ScoreCricket\\Stats.txt");
-                StreamReader sr1 = new StreamReader("F:\\ScoreCricket\\Stats.txt");
+                StreamReader sr = new StreamReader("C:\\Users\\sanat\\source\\repos\\ScoreCricket\\ScoreCricket\\Stats.txt");
+                StreamReader sr1 = new StreamReader("C:\\Users\\sanat\\source\\repos\\ScoreCricket\\ScoreCricket\\Stats.txt");
 
                 using (sr1)
                 {
@@ -89,6 +96,13 @@ namespace Scoreboard
 
                     }
                 }
+                LocateHeading(1, "Name");
+                LocateHeading(2, "StrikeRate");
+                LocateHeading(3, "EconomyRate");
+                LocateHeading(4, "Runs");
+                LocateHeading(5, "Wickets");
+                LocateHeading(6, "Fours");
+                LocateHeading(7, "Sixes");
                 using (sr)
                 {
                     string line;
@@ -143,7 +157,7 @@ namespace Scoreboard
         private void Locate(int column, int value)
         {
             Label currentName = new Label();
-            currentName.Location = new Point((column + 1) * (panelxsize / stats.Length), (playernum - 1) * (panelysize / noOfPlayers));
+            currentName.Location = new Point((column + 1) * (panelxsize / stats.Length), (playernum) * (panelysize / (noOfPlayers+2)));
             if (toggle == 0) { 
             currentName.Name = value.ToString();
             currentName.Text = value.ToString();
@@ -152,8 +166,20 @@ namespace Scoreboard
                 currentName.Text = name;
             }
             currentName.AutoSize = false;
-            currentName.Size = new Size(panelxsize / (stats.Length+2), panelysize / noOfPlayers);
+            currentName.Size = new Size(panelxsize / (stats.Length+2), panelysize / (noOfPlayers+2));
             flowLayoutPanel1.Controls.Add(currentName);
+        }
+        private void LocateHeading(int column, string name)
+        {
+            Label currentName = new Label();
+            currentName.Location = new Point((column + 1) * (panelxsize / stats.Length), 0);
+            currentName.Name = name;
+            currentName.Text = name;
+            currentName.Font = new Font("Arial", 10, FontStyle.Bold,  GraphicsUnit.Point);
+            currentName.AutoSize = false;
+            currentName.Size = new Size(panelxsize / (stats.Length+2), panelysize / (noOfPlayers+2));
+            flowLayoutPanel1.Controls.Add(currentName);
+
         }
 
         private void Button4_Click(object sender, EventArgs e)
