@@ -22,24 +22,27 @@ namespace Scoreboard
         int nop;
         String line;
         String name;
-        int strikerate;
-        int economyrate;
-        int runs;
-        int wickets;
-        int fours;
-        int sixes;
-        int length;
-        char val;
-        int caseSwitch = 1;
+        const int strikerate = 0;
+        const int economyrate = 0;
+        const int runs = 0;
+        const int wickets = 0;
+        const int fours = 0;
+        const int sixes = 0;
+        int panelxsize;
+        int panelysize;
+        int playernum = 0;
         int FormWidth = 1280;
         int FormLength = 1024;
-        
+        int noOfPlayers;
+        int toggle = 0;
+        int[] stats = new int[] { strikerate, economyrate, runs, wickets, fours, sixes };
 
         public Form1()
         {
             InitializeComponent();
-            
-
+            panel1.Visible = false;
+            panelxsize = (FormWidth * 8) / 10;
+            panelysize = (FormLength * 4) / 6;
         }
 
 
@@ -61,48 +64,69 @@ namespace Scoreboard
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            //panel1.Visible = true;
-            
+            panel1.Visible = true;
+
             try
             {
-                //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader("C:\\Users\\sanat\\Source\\Repos\\ScoreCricket\\ScoreCricket\\Stats.txt");
-                 using (sr) 
+
+                StreamReader sr = new StreamReader("F:\\ScoreCricket\\Stats.txt");
+                StreamReader sr1 = new StreamReader("F:\\ScoreCricket\\Stats.txt");
+
+                using (sr1)
                 {
-                string line;
-                // Read and display lines from the file until the end of 
-                // the file is reached.
-                while ((line = sr.ReadLine()) != null) 
-                {
-                    string[] temp = line.Split(' ');
-                    name= temp[0];
-                    strikerate=Int32.Parse(temp[1]);
-                    economyrate=Int32.Parse(temp[2]);
-                    runs = Int32.Parse(temp[3]);
-                    wickets = Int32.Parse(temp[4]);
-                    fours = Int32.Parse(temp[5]);
-                    sixes = Int32.Parse(temp[6]);
-               
-                    Label currentName = new Label();
-                    currentName.Name = name;
-                    currentName.Text = name;
-                    currentName.AutoSize = false;
-                    currentName.Size = new Size(80, 80);
-                    //flowLayoutPanel1.Controls.Add(currentName);
+                    string line;
+                    while ((line = sr1.ReadLine()) != null)
+                    {
+                        
+
+                        noOfPlayers++;
+
+
+                    }
                 }
+                using (sr)
+                {
+                    string line;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] temp = line.Split(' ');
+
+                        playernum++;
+
+
+                        for (int x = 0; x < stats.Length; x++)
+                        {
+                            if (x == 0)
+                            {
+                                name = temp[0];
+                                toggle = 1;
+                                Locate(x, stats[x]);
+                                toggle = 0;
+                            }
+
+                            if (toggle == 0)
+                            {
+
+                                stats[x] = Int32.Parse(temp[x + 1]);
+
+                            }
+                            Locate(x, stats[x]);
+                        }
+                    }
                 }
 
-                
+
             }
             catch (Exception f)
             {
                 Debug.WriteLine("Exception: " + f.Message);
-       
+
             }
             finally
             {
@@ -110,10 +134,31 @@ namespace Scoreboard
             }
         }
 
-        
+        private void FlowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            
+            this.flowLayoutPanel1.Location = new System.Drawing.Point((FormWidth / 10), FormLength / 6);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(panelxsize, panelysize);
+        }
+        private void Locate(int column, int value)
+        {
+            Label currentName = new Label();
+            currentName.Location = new Point((column + 1) * (panelxsize / stats.Length), (playernum - 1) * (panelysize / noOfPlayers));
+            if (toggle == 0) { 
+            currentName.Name = value.ToString();
+            currentName.Text = value.ToString();
+            } else {
+                currentName.Name = name;
+                currentName.Text = name;
+            }
+            currentName.AutoSize = false;
+            currentName.Size = new Size(panelxsize / (stats.Length+2), panelysize / noOfPlayers);
+            flowLayoutPanel1.Controls.Add(currentName);
+        }
 
-       
-
-        
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
     }
 }
